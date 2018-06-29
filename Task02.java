@@ -1,29 +1,44 @@
-import java.util.Scanner;
-
-/* Task02
+/* Task02 
  * 
- * Write a program that reads an integer N and a double D from console and 
- * prints out that double D on separate lines 2*N+1 times. 
- * 
- * For example, if user enters 1  4.5 then the output should be like this:
-4.5
-4.5
-4.5
-
+ * Implement a boolean method public static boolean isPrime(int x) which 
+ * returns TRUE if number is prime and returns FALSE if number is not prime.
  */
 
 public class Task02 {
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Please enter Integer: ");
-		int N = scan.nextInt(); // Enter N
-		System.out.print("Please enter Decimal: ");
-		double D = scan.nextDouble(); // Enter D
-		for (int i = 0; i < (2 * N + 1); i++) {
-			System.out.println(D);
-		}
-		scan.close();
+		/*
+		 * No need to modify main method. Just make sure your method satisfies
+		 * ALL possible test cases according to task instructions, such as
+		 * below.
+		 */
+
+		System.out.println(isPrime(9)); // false
+		System.out.println(isPrime(8)); // false
+		System.out.println(isPrime(17)); // true
+		System.out.println(isPrime(47)); // true
+		System.out.println(isPrime(2)); // true
+		System.out.println(isPrime(1)); // false
+		System.out.println(isPrime(0)); // false
+		System.out.println(isPrime(-3)); // false
 	}
 
+	/**
+	 * 
+	 * @param x
+	 *            given integer
+	 * @return True if integer x is Prime and False otherwise
+	 */
+	public static boolean isPrime(int x) {
+		// First if statement for cases x=1 or x<=0
+		if (x == 1 || x <= 0) {
+			return false;
+		}
+		for (int i = 2; i < x; i++) {
+			if (x % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

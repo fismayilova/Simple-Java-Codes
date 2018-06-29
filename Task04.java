@@ -1,38 +1,1 @@
-import java.util.Scanner;
-
-/* Task04 
- * 
- * Write a program that reads a positive integer N from console 
- * and prints out the maximum of its digits using loop statement. 
- * For example, if user enters 922396 then number 9 is printed. 
- */
-
-public class Task04 {
-	private static int max = 0;
-	private static int reminder;
-
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Please Enter positive integer N: ");
-		int myNum = scan.nextInt();
-		System.out.println("Maximum of its digits is: " + getMax(myNum));
-		scan.close();
-	}
-
-	/**
-	 * 
-	 * @param myNum
-	 *            The Number whose max digit will be computed
-	 * @return greatest digit of the given integer
-	 * 
-	 */
-	private static int getMax(int myNum) {
-		while (myNum / 10 != 0) {
-			reminder = myNum % 10;
-			myNum /= 10;
-			max = (max > reminder) ? max : reminder;
-		}
-		return max;
-	}
-
-}
+import java.util.Scanner;/* Task04 *  * We call Great Numbers those numbers, which equal to the summation of its  * divisors that are less than itself. For example, 6 is a great number, since it is the  * sum of 1, 2, and 3, that are the numbers less than 6 that divide evenly into 6.   * Similarly, 28 is a great number because it is the sum of 1, 2, 4, 7, and 14. Write a  * program that will read an integer from the user and print all the great numbers  * until that integer (including itself). Note that, you must have a boolean method named  * "isGreatNumber" in your class that you use for checking if a number is great. *  * For example, if entering 500, the program should print the following  6  28 496   */public class Task04 {	public static void main(String[] args) {		Scanner sc = new Scanner(System.in);		System.out.print("Please enter a positive integer: ");		int divisor = 1;		int N = sc.nextInt();		for (int i = 1; i <= N; i++) {			// checks until number N			if (isGreatNumber(i, divisor)) {				System.out.println(i);			}		}		sc.close();	}	/**	 * 	 * Boolean method for finding great numbers	 * 	 * @param n	 *            integer that is being checked	 * @param divisor	 *            divisors of integer n	 * @return true if integer is great number and false otherwise	 */	private static boolean isGreatNumber(int n, int divisor) {		int sum = 0;		for (int i = 1; i < n; i++) {			if (n % i == 0) {				sum += i;			} else				continue;		}		if (n == sum) {			return true;		}		return false;	}}
